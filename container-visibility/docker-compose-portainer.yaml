@@ -1,0 +1,21 @@
+version: '3'
+services:
+  portainer:
+    restart: always
+    container_name: portainer
+    image: portainer/portainer
+    networks:
+      - global-default
+    ports:
+    - 9000:9000
+    - 8000:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+networks:
+  global-default:
+    external: true
+
+volumes:
+  portainer_data:
