@@ -11,7 +11,7 @@ services:
       POSTGRES_DB: localstack
     ports:
       - 5432:5432
-    volumes: 
+    volumes:
       - ./var/postgres:/var/lib/postgresql/data
     networks:
       - global-default
@@ -25,7 +25,7 @@ services:
     ports:
       - 5050:80
     volumes:
-       - ./var/pgadmin4:/var/lib/pgadmin
+      - ./var/pgadmin4:/var/lib/pgadmin
     networks:
       - global-default
 
