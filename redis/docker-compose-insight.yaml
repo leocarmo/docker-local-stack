@@ -1,0 +1,14 @@
+version: '3'
+services:
+
+  redisinsight:
+    container_name: redis-insight
+    image: redislabs/redisinsight:latest
+    ports:
+      - 8001:8001
+    networks:
+      - global-default
+
+networks:
+  global-default:
+    external: true

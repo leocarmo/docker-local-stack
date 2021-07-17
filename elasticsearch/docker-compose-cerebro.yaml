@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  cerebro:
+    image: lmenezes/cerebro
+    networks:
+      - global-default
+    ports:
+      - 9000:9000
+
+networks:
+  global-default:
+    external: true
