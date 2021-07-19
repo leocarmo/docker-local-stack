@@ -1,0 +1,18 @@
+version: "3."
+
+services:
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    networks:
+      - global-default
+    volumes:
+      - ./var/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: localstack
+
+networks:
+  global-default:
+    external: true
