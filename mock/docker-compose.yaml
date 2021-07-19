@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  mock-server:
+    image: mockserver/mockserver:mockserver-5.11.1
+    container_name: mock-server
+    command: -logLevel DEBUG
+    networks:
+      - global-default
+    ports:
+      - 1080:1080
+    environment:
+      MOCKSERVER_PROPERTY_FILE: /config/mockserver.properties
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/initializerJson.json
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: 'true'
+    volumes:
+      - ./config:/config
+
+networks:
+  global-default:
+    external: true
