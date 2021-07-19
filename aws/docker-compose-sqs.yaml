@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  aws-localstack:
+    container_name: aws-localstack
+    image: localstack/localstack
+    networks:
+      - global-default
+    ports:
+      - 4566:4566
+    environment:
+      - EDGE_PORT=4566
+      - SERVICES=sqs
+
+networks:
+  global-default:
+    external: true
