@@ -4,6 +4,7 @@ services:
 
   mongo:
     image: mongo
+    container_name: mongodb
     networks:
       - global-default
     ports:
@@ -14,16 +15,17 @@ services:
 
   mongoexpress:
     image: mongo-express
+    container_name: mongodb_express
     networks:
       - global-default
     ports:
       - 8081:8081
-    links:
+    depends_on:
       - mongo
     environment:
-      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=secret
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: secret
 
 networks:
   global-default:
