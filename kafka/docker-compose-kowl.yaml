@@ -4,7 +4,7 @@ services:
 
   kowl:
     image: quay.io/cloudhut/kowl:master
-    hostname: kowl
+    container_name: kafka-kowl
     networks:
       - global-default
     ports:

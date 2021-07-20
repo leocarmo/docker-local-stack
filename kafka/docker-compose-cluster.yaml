@@ -4,6 +4,7 @@ services:
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
+    container_name: kafka-zookeeper
     networks:
       - global-default
     environment:
@@ -12,7 +13,7 @@ services:
 
   kafka-1:
     image: confluentinc/cp-kafka:latest
-    hostname: kafka-1
+    container_name: kafka-1
     networks:
       - global-default
     depends_on:
@@ -26,7 +27,7 @@ services:
 
   kafka-2:
     image: confluentinc/cp-kafka:latest
-    hostname: kafka-2
+    container_name: kafka-2
     networks:
       - global-default
     ports:
@@ -40,7 +41,7 @@ services:
 
   kafka-3:
     image: confluentinc/cp-kafka:latest
-    hostname: kafka-3
+    container_name: kafka-3
     networks:
       - global-default
     ports:
