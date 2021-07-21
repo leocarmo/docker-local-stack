@@ -53,6 +53,20 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-3:39092
 
+  kowl:
+    image: quay.io/cloudhut/kowl:master
+    container_name: kafka-kowl
+    networks:
+      - global-default
+    ports:
+      - 8080:8080
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    environment:
+      KAFKA_BROKERS: kafka-1:19092,kafka-2:29092,kafka-3:39092
+
 networks:
   global-default:
     external: true
